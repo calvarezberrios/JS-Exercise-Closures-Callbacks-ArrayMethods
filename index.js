@@ -144,7 +144,7 @@ function processContains(item, list, callback) {
   let itExists = false;
 
   list.forEach(element => {if(element == item) itExists = true});
-  
+
   return callback(itExists);
 }
 
@@ -169,6 +169,7 @@ function processContains(item, list, callback) {
 */
 function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
   /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -189,8 +190,12 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(/* CODE HERE */) {
+function getFullNames(runners) {
   /* CODE HERE */
+  const fullNames = [];
+  runners.forEach(runner => fullNames.push(`${runner.last_name}, ${runner.first_name}`));
+
+  return fullNames;
 }
 
 /**
