@@ -89,11 +89,13 @@ function processLastItem(stringList, callback) {
  * [2] Invoking `processSum` passing `[]` and `(num) => num + 1000`,
  * should return 1000.
 */
-function processSum(numberList, callback) {
+function processSum(numberList, cb) {
   /* CODE HERE */
-  let sum = 0;
+  /* let sum = 0;
   numberList.forEach(num => sum += num);
-  return callback(sum);
+  return callback(sum); */
+
+  return cb(numberList.reduce((sum, num) => sum += num, 0));
 }
 
 /**
@@ -114,9 +116,9 @@ function processSum(numberList, callback) {
  * [2] Invoking `processProduct` passing 25 and 0 and `(num) => num + 1000`,
  * should return 1000.
 */
-function processProduct(num1, num2, callback) {
+function processProduct(num1, num2, cb) {
   /* CODE HERE */
-  return callback(num1 * num2);
+  return cb(num1 * num2);
 }
 
 /**
@@ -139,13 +141,15 @@ function processProduct(num1, num2, callback) {
  * "lady gaga" and `['foo', 'bar']` and `(bool) => bool ? 'nice!' : 'sad'`,
  * should return "sad".
 */
-function processContains(item, list, callback) {
+function processContains(item, list, cb) {
   /* CODE HERE */
   let itExists = false;
 
   list.forEach(element => {if(element == item) itExists = true});
 
-  return callback(itExists);
+  return cb(itExists);
+
+  //return cb(list.filter(value => value == item) == item);
 }
 
 /**
@@ -167,7 +171,7 @@ function processContains(item, list, callback) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(list, callback) {
+function processDuplicateFree(list, cb) {
   /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
   list.sort();    
   
@@ -178,7 +182,7 @@ function processDuplicateFree(list, callback) {
     }
   }
   
-  return callback(list);
+  return cb(list);
 
 }
 
@@ -222,9 +226,11 @@ function getFullNames(runners) {
 */
 function firstNamesAllCaps(runners) {
   /* CODE HERE */
-  const allCaps = runners.map((name) => name.first_name.toUpperCase());
+  /* const allCaps = runners.map((name) => name.first_name.toUpperCase());
 
-  return allCaps;
+  return allCaps; */
+
+  return runners.map(name => name.first_name.toUpperCase());
 }
 
 /**
@@ -242,11 +248,13 @@ function firstNamesAllCaps(runners) {
 */
 function getRunnersByTShirtSize(runners, tShirtSize) {
   /* CODE HERE */
-  const runnersTShirtSize = runners.filter((sizes) => {
+  /* const runnersTShirtSize = runners.filter((sizes) => {
     return sizes.shirt_size == tShirtSize;
   });
 
-  return runnersTShirtSize;
+  return runnersTShirtSize; */
+
+  return runners.filter(runner => runner.shirt_size == tShirtSize);
 }
 
 /**
@@ -261,9 +269,7 @@ function getRunnersByTShirtSize(runners, tShirtSize) {
 */
 function tallyUpDonations(runners) {
   /* CODE HERE */
-  return runners.reduce((total, donations) => {
-    return total += donations.donation;
-  }, 0);
+  return runners.reduce((total, runner) => total += runner.donation, 0);
 }
 
 /////////////// CLOSURES ///////////////
@@ -315,14 +321,13 @@ function counterMakerWithLimit(max) {
   /* CODE HERE */
   let count = 0;
 
-  return function counter() {
+  return function() {
       if (count < max) {
         return count++;
       } else { 
         count = 0;
         return max;
-      }
-    
+      }    
   }
 }
 
