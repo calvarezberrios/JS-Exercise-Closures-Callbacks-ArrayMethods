@@ -89,13 +89,13 @@ function processLastItem(stringList, callback) {
  * [2] Invoking `processSum` passing `[]` and `(num) => num + 1000`,
  * should return 1000.
 */
-function processSum(numberList, cb) {
+function processSum(numberList, callback) {
   /* CODE HERE */
   /* let sum = 0;
   numberList.forEach(num => sum += num);
   return callback(sum); */
 
-  return cb(numberList.reduce((sum, num) => sum += num, 0));
+  return callback(numberList.reduce((sum, num) => sum += num, 0));
 }
 
 /**
@@ -116,9 +116,9 @@ function processSum(numberList, cb) {
  * [2] Invoking `processProduct` passing 25 and 0 and `(num) => num + 1000`,
  * should return 1000.
 */
-function processProduct(num1, num2, cb) {
+function processProduct(num1, num2, callback) {
   /* CODE HERE */
-  return cb(num1 * num2);
+  return callback(num1 * num2);
 }
 
 /**
@@ -141,13 +141,13 @@ function processProduct(num1, num2, cb) {
  * "lady gaga" and `['foo', 'bar']` and `(bool) => bool ? 'nice!' : 'sad'`,
  * should return "sad".
 */
-function processContains(item, list, cb) {
+function processContains(item, list, callback) {
   /* CODE HERE */
   let itExists = false;
 
   list.forEach(element => {if(element == item) itExists = true});
 
-  return cb(itExists);
+  return callback(itExists);
 
   //return cb(list.filter(value => value == item) == item);
 }
@@ -171,7 +171,7 @@ function processContains(item, list, cb) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(list, cb) {
+function processDuplicateFree(list, callback) {
   /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
   list.sort();    
   
@@ -182,7 +182,7 @@ function processDuplicateFree(list, cb) {
     }
   }
   
-  return cb(list);
+  return callback(list);
 
 }
 
